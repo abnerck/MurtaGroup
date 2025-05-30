@@ -31,7 +31,7 @@ def home():
             msg = Message(
                 subject=f"Mensaje de contacto: {subject}",
                 sender=app.config['MAIL_USERNAME'],
-                recipients=['abnerck9@gmail.com'],  # cambia al correo destino real
+                recipients=['abnerck9@gmail.com','dinizmurta@hotmail.com'],  # cambia al correo destino real
                 body=f"""Nombre: {name}
 Email: {email}
 Mensaje: {message}"""
@@ -47,4 +47,6 @@ Mensaje: {message}"""
     return render_template('index.html')
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=True)
+
+

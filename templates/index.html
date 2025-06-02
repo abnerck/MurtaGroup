@@ -17,6 +17,65 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <style>
+        /* Services Section */
+        .services-section {
+            padding: 100px 0;
+            background-color: white;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 12px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.4s ease;
+            height: 100%;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            border-color: var(--amarillo-dorado);
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background-color: var(--beige-claro);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover .service-icon {
+            background-color: var(--amarillo-dorado);
+            transform: scale(1.1);
+        }
+
+        .service-icon i {
+            font-size: 2rem;
+            color: var(--azul-oscuro);
+        }
+
+        .service-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--azul-oscuro);
+        }
+
+        .service-description {
+            color: var(--azul-medio);
+            line-height: 1.8;
+            margin-bottom: 0;
+        }
+
         :root {
             --azul-oscuro: #272857;
             --azul-claro: #63c4db;
@@ -310,6 +369,13 @@
             line-height: 1.8;
         }
 
+        .carousel-inner img {
+            object-fit: cover;
+            height: 600px;
+            /* o el alto que prefieras */
+        }
+
+
         .testimonial-author {
             display: flex;
             align-items: center;
@@ -561,6 +627,14 @@
                 padding: 30px;
             }
         }
+
+        .hero-btn {
+            display: inline-block;
+            /* Permite que el enlace se comporte como bloque */
+            text-decoration: none;
+            /* Elimina el subrayado del enlace */
+            /* Mantén el resto de tus estilos existentes */
+        }
     </style>
 </head>
 
@@ -600,11 +674,11 @@
         <div id="heroCarousel" class="carousel slide hero-carousel" data-bs-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active"
-                    style="background-image: url('{{ url_for('static', filename='img/murta.jpg') }}')">
+                    style="background-image: url('{{ url_for('static', filename='img/portalmaya.jpg') }}')">
                 </div>
                 <!-- Si quieres más slides, puedes agregarlos así: -->
                 <div class="carousel-item"
-                    style="background-image: url('{{ url_for('static', filename='img/playa.jpg') }}')">
+                    style="background-image: url('{{ url_for('static', filename='img/murta.jpg') }}')">
                 </div>
                 <div class="carousel-item"
                     style="background-image: url('{{ url_for('static', filename='img/mg.jpg') }}')">
@@ -614,26 +688,28 @@
 
         <div class="container hero-content">
             <div class="row">
-                <div class="col-lg-7">
-                    <h1 class="hero-title">Murta Group where your story begins</h1>
-                    <p class="hero-subtitle">Over 10 years of experience helping families find their ideal property.
-                        Discover our exclusive selection of premium homes.</p>
-                    <button class="hero-btn">Explore Properties</button>
+                <div class="row">
+                    <div class="col-lg-7">
+                        <h1 class="hero-title">Murta Group where your story begins</h1>
+                        <p class="hero-subtitle">Over 10 years of experience helping families find their ideal property.
+                            Discover our exclusive selection of premium homes.</p>
+                        <a class="hero-btn" href="#properties">Explore Properties</a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Featured Properties -->
-    <!-- Featured Properties - Modificado con modales -->
+
+    <!-- PROPIEDADES -->
     <section id="properties" class="featured-properties">
         <div class="container">
             <h2 class="section-title fade-in">Featured Properties</h2>
             <div class="row">
                 <!-- Property 1 -->
-                <div class="col-md-4 fade-in">
+                <div class="col-md-4 col-lg-3 fade-in">
                     <div class="property-card">
-                        <img src="{{ url_for('static', filename='img/primero.jpg') }}" alt="Modern house"
+                        <img src="{{ url_for('static', filename='img/dep1/primero.jpg') }}" alt="Luxury Penthouse"
                             class="property-img">
                         <div class="property-info">
                             <span class="property-type">For Sale/Rent</span>
@@ -649,7 +725,10 @@
                                     <i class="fas fa-bath"></i>
                                     <span>2 Baths</span>
                                 </div>
-
+                                <div class="feature">
+                                    <i class="fas fa-swimming-pool"></i>
+                                    <span>Rooftop</span>
+                                </div>
                             </div>
                             <div class="property-price">$430,000</div>
                             <button class="property-btn" data-bs-toggle="modal" data-bs-target="#propertyModal1">View
@@ -659,15 +738,15 @@
                 </div>
 
                 <!-- Property 2 -->
-                <div class="col-md-4 fade-in" style="transition-delay: 0.2s">
+                <div class="col-md-4 col-lg-3 fade-in" style="transition-delay: 0.1s">
                     <div class="property-card">
-                        <img src="{{ url_for('static', filename='img/dep2.1.jpg') }}" alt="Ocean view apartment"
+                        <img src="{{ url_for('static', filename='img/dep2/dep2.1.jpg') }}" alt="Ocean View Apartment"
                             class="property-img">
                         <div class="property-info">
                             <span class="property-type">For Rent</span>
                             <h3 class="property-title">Ocean View Apartment</h3>
-                            <p class="property-location"><i class="fas fa-map-marker-alt"></i> Macondo 5th Avenue, Playa
-                                del Carmen</p>
+                            <p class="property-location"><i class="fas fa-map-marker-alt"></i> 5th Avenue, Playa del
+                                Carmen</p>
                             <div class="property-features">
                                 <div class="feature">
                                     <i class="fas fa-bed"></i>
@@ -678,548 +757,2083 @@
                                     <span>1 Bath</span>
                                 </div>
                                 <div class="feature">
-                                    <i class="fas fa-building"></i>
-                                    <span>5th Floor</span>
+                                    <i class="fas fa-umbrella-beach"></i>
+                                    <span>Beachfront</span>
                                 </div>
                             </div>
-                            <div class="property-price">Ask for Pricing</div>
+                            <div class="property-price">$1,200/month</div>
                             <button class="property-btn" data-bs-toggle="modal" data-bs-target="#propertyModal2">View
                                 Details</button>
                         </div>
                     </div>
                 </div>
 
-
-                <!-- Property 3 -->
-                <div class="col-md-4 fade-in" style="transition-delay: 0.4s">
+                <!-- Property 3 - Macondo Studio -->
+                <div class="col-md-4 col-lg-3 fade-in" style="transition-delay: 0.2s">
                     <div class="property-card">
-                        <img src="https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
-                            alt="Country house" class="property-img">
+                        <img src="{{ url_for('static', filename='img/dep3/dep3.1.jpg') }}"
+                            alt="Macondo Ocean View Studio" class="property-img">
                         <div class="property-info">
-                            <span class="property-type">For Sale</span>
-                            <h3 class="property-title">Country Villa</h3>
-                            <p class="property-location"><i class="fas fa-map-marker-alt"></i> Residential Area,
-                                Countryside</p>
+                            <span class="property-type">For Rent</span>
+                            <h3 class="property-title">Ocean View Studio</h3>
+                            <p class="property-location"><i class="fas fa-map-marker-alt"></i> 5th Av & 48th St, Pdc</p>
                             <div class="property-features">
                                 <div class="feature">
                                     <i class="fas fa-bed"></i>
-                                    <span>5 Beds</span>
+                                    <span>1 Bed</span>
                                 </div>
                                 <div class="feature">
                                     <i class="fas fa-bath"></i>
-                                    <span>4 Baths</span>
+                                    <span>1 Bath</span>
                                 </div>
                                 <div class="feature">
-                                    <i class="fas fa-vector-square"></i>
-                                    <span>450 m²</span>
+                                    <i class="fas fa-swimming-pool"></i>
+                                    <span>2 Pools</span>
                                 </div>
                             </div>
-                            <div class="property-price">$1,200,000</div>
+                            <div class="property-price">Short & Long Term</div>
                             <button class="property-btn" data-bs-toggle="modal" data-bs-target="#propertyModal3">View
                                 Details</button>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="text-center mt-5 fade-in" style="transition-delay: 0.6s">
-                <button class="hero-btn">View All Properties</button>
+
+                <!-- Property 4 -->
+                <div class="col-md-4 col-lg-3 fade-in" style="transition-delay: 0.3s">
+                    <div class="property-card">
+                        <img src="{{ url_for('static', filename='img/dep4/dep4.15.jpg') }}" alt="Beach House"
+                            class="property-img">
+                        <div class="property-info">
+                            <span class="property-type">For Sale</span>
+                            <h3 class="property-title">Beach House</h3>
+                            <p class="property-location"><i class="fas fa-map-marker-alt"></i> Playacar, Playa del
+                                Carmen</p>
+                            <div class="property-features">
+                                <div class="feature">
+                                    <i class="fas fa-bed"></i>
+                                    <span>4 Beds</span>
+                                </div>
+                                <div class="feature">
+                                    <i class="fas fa-bath"></i>
+                                    <span>3 Baths</span>
+                                </div>
+                                <div class="feature">
+                                    <i class="fas fa-water"></i>
+                                    <span>Pool</span>
+                                </div>
+                            </div>
+                            <div class="property-price">$850,000</div>
+                            <button class="property-btn" data-bs-toggle="modal" data-bs-target="#propertyModal4">View
+                                Details</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Property 5 -->
+                <div class="col-md-4 col-lg-3 fade-in" style="transition-delay: 0.4s">
+    <div class="property-card">
+        <img src="{{ url_for('static', filename='img/dep5/perfil.jpg') }}" alt="Beach Apartment"
+            class="property-img">
+        <div class="property-info">
+            <span class="property-type">FOR RENT/SALE </span>
+            <h3 class="property-title">Beach Apartment</h3>
+            <p class="property-location"><i class="fas fa-map-marker-alt"></i> PDC, 1 block from 5th Ave</p>
+            <div class="property-features">
+                <div class="feature">
+                    <i class="fas fa-couch"></i>
+                    <span>Studio</span>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-bath"></i>
+                    <span>1 Bath</span>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-swimming-pool"></i>
+                    <span>2 Pools</span>
+                </div>
+            </div>
+            <div class="property-price">Contact for price</div>
+            <button class="property-btn" data-bs-toggle="modal" data-bs-target="#propertyModal5">View
+                Details</button>
+        </div>
+    </div>
+</div>
+
+
+                <div class="col-md-4 col-lg-3 fade-in" style="transition-delay: 0.5s">
+                    <div class="property-card">
+                        <img src="{{ url_for('static', filename='img/dep6/dep6.8.jpg') }}"
+                            alt="Aldea Zama Lock-Off Condo" class="property-img">
+                        <div class="property-info">
+                            <span class="property-type">FOR SALE</span>
+                            <h3 class="property-title">Aldea Zama Condo</h3>
+                            <p class="property-location"><i class="fas fa-map-marker-alt"></i> Aldea Zama, Tulum</p>
+                            <div class="property-features">
+                                <div class="feature">
+                                    <i class="fas fa-bed"></i>
+                                    <span>2 Beds</span>
+                                </div>
+                                <div class="feature">
+                                    <i class="fas fa-swimming-pool"></i>
+                                    <span>Rooftop Pool</span>
+                                </div>
+                                <div class="feature">
+                                    <i class="fas fa-dumbbell"></i>
+                                    <span>Gym</span>
+                                </div>
+                            </div>
+                            <div class="property-price">Contact for Price</div>
+                            <button class="property-btn" data-bs-toggle="modal" data-bs-target="#propertyModal6">View
+                                Details</button>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Property 7 -->
+                <div class="col-md-4 col-lg-3 fade-in" style="transition-delay: 0.6s">
+                    <div class="property-card">
+                        <img src="{{ url_for('static', filename='img/dep7/dep7.3.jpg') }}" alt="Elena Residences Studio"
+                            class="property-img">
+                        <div class="property-info">
+                            <span class="property-type">FOR SALE</span>
+                            <h3 class="property-title">Elena Residences</h3>
+                            <p class="property-location"><i class="fas fa-map-marker-alt"></i> Tulum, Quintana Roo</p>
+                            <div class="property-features">
+                                <div class="feature">
+                                    <i class="fas fa-vector-square"></i>
+                                    <span>388 Sq</span>
+                                </div>
+                                <div class="feature">
+                                    <i class="fas fa-swimming-pool"></i>
+                                    <span>Pool</span>
+                                </div>
+                                <div class="feature">
+                                    <i class="fas fa-shield-alt"></i>
+                                    <span>24h Security</span>
+                                </div>
+                            </div>
+                            <div class="property-price">$89,777 USD</div>
+                            <button class="property-btn" data-bs-toggle="modal" data-bs-target="#propertyModal7">View
+                                Details</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Property 8 -->
+                <div class="col-md-4 col-lg-3 fade-in" style="transition-delay: 0.7s">
+                    <div class="property-card">
+                        <img src="{{ url_for('static', filename='img/dep8/dep8.5.jpg') }}" alt="Macondo Punta Esmeralda"
+                            class="property-img">
+                        <div class="property-info">
+                            <span class="property-type">PRE SALE</span>
+                            <h3 class="property-title">Macondo</h3>
+                            <p class="property-location"><i class="fas fa-map-marker-alt"></i> Punta Esmeralda, PDC</p>
+                            <div class="property-features">
+
+                                <div class="feature">
+                                    <i class="fas fa-calendar-alt"></i>
+                                    <span>Delivery 2026</span>
+                                </div>
+                                <div class="feature">
+                                    <i class="fas fa-cocktail"></i>
+                                    <span>Rooftop Bar</span>
+                                </div>
+                            </div>
+                            <div class="property-price">From $110,000</div>
+                            <button class="property-btn" data-bs-toggle="modal" data-bs-target="#propertyModal8">View
+                                Details</button>
+                        </div>
+                    </div>
+                </div>
+
+
             </div>
         </div>
     </section>
-
-    <!-- Modal para Property 1 -->
-    <div class="modal fade" id="propertyModal1" tabindex="-1" aria-labelledby="propertyModalLabel1" aria-hidden="true">
-        <div class="modal-dialog modal-xl modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="propertyModalLabel1">Luxury Penthouse - $430,000</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div id="carouselProperty1" class="carousel slide" data-bs-ride="carousel">
-                        <div class="carousel-indicators">
-                            <button type="button" data-bs-target="#carouselProperty1" data-bs-slide-to="0"
-                                class="active" aria-current="true" aria-label="Slide 1"></button>
-                            <button type="button" data-bs-target="#carouselProperty1" data-bs-slide-to="1"
-                                aria-label="Slide 2"></button>
-                            <button type="button" data-bs-target="#carouselProperty1" data-bs-slide-to="2"
-                                aria-label="Slide 3"></button>
-                            <button type="button" data-bs-target="#carouselProperty1" data-bs-slide-to="3"
-                                aria-label="Slide 4"></button>
-                            <button type="button" data-bs-target="#carouselProperty1" data-bs-slide-to="4"
-                                aria-label="Slide 5"></button>
-                            <button type="button" data-bs-target="#carouselProperty1" data-bs-slide-to="5"
-                                aria-label="Slide 6"></button>
-                            <button type="button" data-bs-target="#carouselProperty1" data-bs-slide-to="6"
-                                aria-label="Slide 7"></button>
-                            <button type="button" data-bs-target="#carouselProperty1" data-bs-slide-to="7"
-                                aria-label="Slide 8"></button>
-                            <button type="button" data-bs-target="#carouselProperty1" data-bs-slide-to="8"
-                                aria-label="Slide 9"></button>
-                            <button type="button" data-bs-target="#carouselProperty1" data-bs-slide-to="9"
-                                aria-label="Slide 10"></button>
-                            <button type="button" data-bs-target="#carouselProperty1" data-bs-slide-to="10"
-                                aria-label="Slide 11"></button>
-                            <button type="button" data-bs-target="#carouselProperty1" data-bs-slide-to="11"
-                                aria-label="Slide 12"></button>
-                            <button type="button" data-bs-target="#carouselProperty1" data-bs-slide-to="12"
-                                aria-label="Slide 13"></button>
-                            <button type="button" data-bs-target="#carouselProperty1" data-bs-slide-to="13"
-                                aria-label="Slide 14"></button>
-                            <button type="button" data-bs-target="#carouselProperty1" data-bs-slide-to="14"
-                                aria-label="Slide 15"></button>
+    <!--Informacion de los departamentos-->
+    <section>
 
 
-                            <!-- Agrega más indicadores según el número de fotos -->
-                        </div>
-                        <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <img src="{{ url_for('static', filename='img/dep1.1.jpg') }}" class="d-block w-100"
-                                    alt="Property image 1">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="{{ url_for('static', filename='img/dep1.2.jpg') }}" class="d-block w-100"
-                                    alt="Property image 2">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="{{ url_for('static', filename='img/dep1.3.jpg') }}" class="d-block w-100"
-                                    alt="Property image 3">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="{{ url_for('static', filename='img/dep1.4.jpg') }}" class="d-block w-100"
-                                    alt="Property image 4">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="{{ url_for('static', filename='img/dep1.5.jpg') }}" class="d-block w-100"
-                                    alt="Property image 5">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="{{ url_for('static', filename='img/dep1.6.jpg') }}" class="d-block w-100"
-                                    alt="Property image 6">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="{{ url_for('static', filename='img/dep1.7.jpg') }}" class="d-block w-100"
-                                    alt="Property image 7">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="{{ url_for('static', filename='img/dep1.8.jpg') }}" class="d-block w-100"
-                                    alt="Property image 8">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="{{ url_for('static', filename='img/dep1.9.jpg') }}" class="d-block w-100"
-                                    alt="Property image 9">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="{{ url_for('static', filename='img/dep1.10.jpg') }}" class="d-block w-100"
-                                    alt="Property image 10">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="{{ url_for('static', filename='img/dep1.11.jpg') }}" class="d-block w-100"
-                                    alt="Property image 11">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="{{ url_for('static', filename='img/dep1.12.jpg') }}" class="d-block w-100"
-                                    alt="Property image 12">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="{{ url_for('static', filename='img/dep1.13.jpg') }}" class="d-block w-100"
-                                    alt="Property image 13">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="{{ url_for('static', filename='img/dep1.14.jpg') }}" class="d-block w-100"
-                                    alt="Property image 14">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="{{ url_for('static', filename='img/dep1.15.jpg') }}" class="d-block w-100"
-                                    alt="Property image 15">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="{{ url_for('static', filename='img/dep1.16.jpg') }}" class="d-block w-100"
-                                    alt="Property image 16">
-                            </div>
-
-                            <!-- Agrega más items según el número de fotos -->
-                        </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselProperty1"
-                            data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselProperty1"
-                            data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
+        <!-- Modal para Property 1 -->
+        <div class="modal fade" id="propertyModal1" tabindex="-1" aria-labelledby="propertyModalLabel1"
+            aria-hidden="true">
+            <div class="modal-dialog modal-xl modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="propertyModalLabel1">Luxury Penthouse - $430,000</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
+                    <div class="modal-body">
+                        <div id="carouselProperty1" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-indicators">
+                                <button type="button" data-bs-target="#carouselProperty1" data-bs-slide-to="0"
+                                    class="active" aria-current="true" aria-label="Slide 1"></button>
+                                <button type="button" data-bs-target="#carouselProperty1" data-bs-slide-to="1"
+                                    aria-label="Slide 2"></button>
+                                <button type="button" data-bs-target="#carouselProperty1" data-bs-slide-to="2"
+                                    aria-label="Slide 3"></button>
+                                <button type="button" data-bs-target="#carouselProperty1" data-bs-slide-to="3"
+                                    aria-label="Slide 4"></button>
+                                <button type="button" data-bs-target="#carouselProperty1" data-bs-slide-to="4"
+                                    aria-label="Slide 5"></button>
+                                <button type="button" data-bs-target="#carouselProperty1" data-bs-slide-to="5"
+                                    aria-label="Slide 6"></button>
+                                <button type="button" data-bs-target="#carouselProperty1" data-bs-slide-to="6"
+                                    aria-label="Slide 7"></button>
+                                <button type="button" data-bs-target="#carouselProperty1" data-bs-slide-to="7"
+                                    aria-label="Slide 8"></button>
+                                <button type="button" data-bs-target="#carouselProperty1" data-bs-slide-to="8"
+                                    aria-label="Slide 9"></button>
+                                <button type="button" data-bs-target="#carouselProperty1" data-bs-slide-to="9"
+                                    aria-label="Slide 10"></button>
+                                <button type="button" data-bs-target="#carouselProperty1" data-bs-slide-to="10"
+                                    aria-label="Slide 11"></button>
+                                <button type="button" data-bs-target="#carouselProperty1" data-bs-slide-to="11"
+                                    aria-label="Slide 12"></button>
+                                <button type="button" data-bs-target="#carouselProperty1" data-bs-slide-to="12"
+                                    aria-label="Slide 13"></button>
+                                <button type="button" data-bs-target="#carouselProperty1" data-bs-slide-to="13"
+                                    aria-label="Slide 14"></button>
 
-                    <div class="property-details mt-4">
-                        <h4>Penthouse with Private Rooftop in Zazil-Ha</h4>
-                        <p><i class="fas fa-map-marker-alt"></i> Zazil-Ha, Playa del Carmen</p>
 
-                        <div class="row mt-3">
-                            <div class="col-md-6">
-                                <h5>Property Details</h5>
-                                <ul class="list-unstyled">
-                                    <li><strong>Type:</strong> Penthouse</li>
-                                    <li><strong>Status:</strong> Available for sale or rent</li>
-                                    <li><strong>Bedrooms:</strong> 2</li>
-                                    <li><strong>Bathrooms:</strong> 2 full + 2 half</li>
-                                    <li><strong>Area:</strong> 180 m²</li>
-                                    <li><strong>Building:</strong> The Meridian</li>
-                                    <li><strong>Year Built:</strong> 2020</li>
-                                    <li><strong>Sale Price:</strong> $430,000 USD</li>
-                                    <li><strong>Rental Options:</strong> Short-term and long-term</li>
-                                </ul>
+
+                                <!-- Agrega más indicadores según el número de fotos -->
                             </div>
-                            <div class="col-md-6">
-                                <h5>Amenities</h5>
-                                <ul class="list-unstyled">
-                                    <li><i class="fas fa-check text-success"></i> Private Rooftop Terrace</li>
-                                    <li><i class="fas fa-check text-success"></i> Rooftop Pool</li>
-                                    <li><i class="fas fa-check text-success"></i> Air Conditioning</li>
-                                    <li><i class="fas fa-check text-success"></i> High-Speed Wi-Fi</li>
-                                    <li><i class="fas fa-check text-success"></i> Fully Equipped Kitchen</li>
-                                    <li><i class="fas fa-check text-success"></i> Washer/Dryer</li>
-                                    <li><i class="fas fa-check text-success"></i> Gated Building</li>
-                                    <li><i class="fas fa-check text-success"></i> 24/7 Security</li>
-                                    <li><i class="fas fa-check text-success"></i> Outdoor Parking</li>
-                                </ul>
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img src="{{ url_for('static', filename='img/dep1/dep1.3.jpg') }}"
+                                        class="d-block w-100" alt="Property image 1">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="{{ url_for('static', filename='img/dep1/dep1.4.jpg') }}"
+                                        class="d-block w-100" alt="Property image 2">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="{{ url_for('static', filename='img/dep1/dep1.5.jpg') }}"
+                                        class="d-block w-100" alt="Property image 3">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="{{ url_for('static', filename='img/dep1/dep1.6.jpg') }}"
+                                        class="d-block w-100" alt="Property image 4">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="{{ url_for('static', filename='img/dep1/dep1.7.jpg') }}"
+                                        class="d-block w-100" alt="Property image 5">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="{{ url_for('static', filename='img/dep1/dep1.8.jpg') }}"
+                                        class="d-block w-100" alt="Property image 6">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="{{ url_for('static', filename='img/dep1/dep1.9.jpg') }}"
+                                        class="d-block w-100" alt="Property image 7">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="{{ url_for('static', filename='img/dep1/dep1.10.jpg') }}"
+                                        class="d-block w-100" alt="Property image 8">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="{{ url_for('static', filename='img/dep1/dep1.11.jpg') }}"
+                                        class="d-block w-100" alt="Property image 9">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="{{ url_for('static', filename='img/dep1/dep1.12.jpg') }}"
+                                        class="d-block w-100" alt="Property image 10">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="{{ url_for('static', filename='img/dep1/dep1.13.jpg') }}"
+                                        class="d-block w-100" alt="Property image 11">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="{{ url_for('static', filename='img/dep1/dep1.14.jpg') }}"
+                                        class="d-block w-100" alt="Property image 12">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="{{ url_for('static', filename='img/dep1/dep1.15.jpg') }}"
+                                        class="d-block w-100" alt="Property image 13">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="{{ url_for('static', filename='img/dep1/dep1.16.jpg') }}"
+                                        class="d-block w-100" alt="Property image 14">
+                                </div>
+
+                                <!-- Agrega más items según el número de fotos -->
                             </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselProperty1"
+                                data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carouselProperty1"
+                                data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
                         </div>
 
-                        <div class="mt-4">
-                            <h5>Property Description</h5>
-                            <p>This exquisite penthouse in The Meridian building offers luxury living with a private
-                                rooftop terrace and stunning views. The contemporary design features:</p>
-                            <ul>
-                                <li>Two spacious bedrooms with en-suite bathrooms</li>
-                                <li>Two additional half bathrooms for guests</li>
-                                <li>Open-concept living area with high-end finishes</li>
-                                <li>Gourmet kitchen with premium appliances</li>
-                                <li>Floor-to-ceiling windows with abundant natural light</li>
-                            </ul>
-                            <p>Located just one block from Coco Beach in the charming Zazil-Ha neighborhood, you'll
-                                enjoy:</p>
-                            <ul>
-                                <li>Proximity to 5th Avenue's restaurants and shops</li>
-                                <li>Easy access to artisan markets and local cafés</li>
-                                <li>Tranquil residential atmosphere</li>
-                                <li>Quick walk to the beach</li>
-                            </ul>
-                            <p>The building amenities include a spectacular rooftop swimming pool and 24-hour security.
-                                This property is perfect as a permanent residence, vacation home, or investment property
-                                with excellent rental potential.</p>
+                        <div class="property-details mt-4">
+                            <h4>Penthouse with Private Rooftop in Zazil-Ha</h4>
+                            <p><i class="fas fa-map-marker-alt"></i> Zazil-Ha, Playa del Carmen</p>
+
+                            <div class="row mt-3">
+                                <div class="col-md-6">
+                                    <h5>Property Details</h5>
+                                    <ul class="list-unstyled">
+                                        <li><strong>Type:</strong> Penthouse</li>
+                                        <li><strong>Status:</strong> Available for sale or rent</li>
+                                        <li><strong>Bedrooms:</strong> 2</li>
+                                        <li><strong>Bathrooms:</strong> 2 full + 2 half</li>
+                                        <li><strong>Area:</strong> 180 m²</li>
+                                        <li><strong>Building:</strong> The Meridian</li>
+                                        <li><strong>Year Built:</strong> 2020</li>
+                                        <li><strong>Sale Price:</strong> $430,000 USD</li>
+                                        <li><strong>Rental Options:</strong> Short-term and long-term</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <h5>Amenities</h5>
+                                    <ul class="list-unstyled">
+                                        <li><i class="fas fa-check text-success"></i> Private Rooftop Terrace</li>
+                                        <li><i class="fas fa-check text-success"></i> Rooftop Pool</li>
+                                        <li><i class="fas fa-check text-success"></i> Air Conditioning</li>
+                                        <li><i class="fas fa-check text-success"></i> High-Speed Wi-Fi</li>
+                                        <li><i class="fas fa-check text-success"></i> Fully Equipped Kitchen</li>
+                                        <li><i class="fas fa-check text-success"></i> Washer/Dryer</li>
+                                        <li><i class="fas fa-check text-success"></i> Gated Building</li>
+                                        <li><i class="fas fa-check text-success"></i> 24/7 Security</li>
+                                        <li><i class="fas fa-check text-success"></i> Outdoor Parking</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="mt-4">
+                                <h5>Property Description</h5>
+                                <p>This exquisite penthouse in The Meridian building offers luxury living with a private
+                                    rooftop terrace and stunning views. The contemporary design features:</p>
+                                <ul>
+                                    <li>Two spacious bedrooms with en-suite bathrooms</li>
+                                    <li>Two additional half bathrooms for guests</li>
+                                    <li>Open-concept living area with high-end finishes</li>
+                                    <li>Gourmet kitchen with premium appliances</li>
+                                    <li>Floor-to-ceiling windows with abundant natural light</li>
+                                </ul>
+                                <p>Located just one block from Coco Beach in the charming Zazil-Ha neighborhood, you'll
+                                    enjoy:</p>
+                                <ul>
+                                    <li>Proximity to 5th Avenue's restaurants and shops</li>
+                                    <li>Easy access to artisan markets and local cafés</li>
+                                    <li>Tranquil residential atmosphere</li>
+                                    <li>Quick walk to the beach</li>
+                                </ul>
+                                <p>The building amenities include a spectacular rooftop swimming pool and 24-hour
+                                    security.
+                                    This property is perfect as a permanent residence, vacation home, or investment
+                                    property
+                                    with excellent rental potential.</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <a href="https://wa.me/529983074424" target="_blank" class="btn btn-primary">Contact Agent</a>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <a href="https://wa.me/529983074424" target="_blank" class="btn btn-primary">Contact Agent</a>
 
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <style>
-        .carousel-item img {
-            max-height: 70vh;
-            object-fit: cover;
-            object-position: center;
-            width: 100%;
-        }
-    </style>
+        <style>
+            .carousel-item img {
+                max-height: 70vh;
+                object-fit: cover;
+                object-position: center;
+                width: 100%;
+            }
+        </style>
 
-    <!-- Modal para Property 2 -->
-    <div class="modal fade" id="propertyModal2" tabindex="-1" aria-labelledby="propertyModalLabel2" aria-hidden="true">
-        <div class="modal-dialog modal-xl modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="propertyModalLabel2">Luxury Penthouse - $3,200/month</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div id="carouselProperty2" class="carousel slide" data-bs-ride="carousel">
-                        <div class="carousel-indicators">
-                            <button type="button" data-bs-target="#carouselProperty2" data-bs-slide-to="0"
-                                class="active" aria-current="true" aria-label="Slide 1"></button>
-                            <button type="button" data-bs-target="#carouselProperty2" data-bs-slide-to="1"
-                                aria-label="Slide 2"></button>
-                            <button type="button" data-bs-target="#carouselProperty2" data-bs-slide-to="2"
-                                aria-label="Slide 3"></button>
-
-                            <button type="button" data-bs-target="#carouselProperty2" data-bs-slide-to="3"
-                                aria-label="Slide 4"></button>
-
-                            <button type="button" data-bs-target="#carouselProperty2" data-bs-slide-to="4"
-                                aria-label="Slide 5"></button>
-
-                            <button type="button" data-bs-target="#carouselProperty2" data-bs-slide-to="5"
-                                aria-label="Slide 6"></button>
-
-                            <button type="button" data-bs-target="#carouselProperty2" data-bs-slide-to="6"
-                                aria-label="Slide 7"></button>
-
-                            <button type="button" data-bs-target="#carouselProperty2" data-bs-slide-to="7"
-                                aria-label="Slide 8"></button>
-
-                            <button type="button" data-bs-target="#carouselProperty2" data-bs-slide-to="8"
-                                aria-label="Slide 9"></button>
-
-                            <button type="button" data-bs-target="#carouselProperty2" data-bs-slide-to="9"
-                                aria-label="Slide 10"></button>
-
-                            <button type="button" data-bs-target="#carouselProperty2" data-bs-slide-to="10"
-                                aria-label="Slide 11"></button>
-
-                            <button type="button" data-bs-target="#carouselProperty2" data-bs-slide-to="11"
-                                aria-label="Slide 12"></button>
-
-                            <button type="button" data-bs-target="#carouselProperty2" data-bs-slide-to="12"
-                                aria-label="Slide 13"></button>
-                            <button type="button" data-bs-target="#carouselProperty2" data-bs-slide-to="13"
-                                aria-label="Slide 14"></button>
-                            <button type="button" data-bs-target="#carouselProperty2" data-bs-slide-to="14"
-                                aria-label="Slide 15"></button>
-                            <button type="button" data-bs-target="#carouselProperty2" data-bs-slide-to="15"
-                                aria-label="Slide 16"></button>
-
-                        </div>
-
-                        <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <img src="{{ url_for('static', filename='img/dep2.1.jpg') }}" class="d-block w-100"
-                                    alt="Property image 1">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="{{ url_for('static', filename='img/dep2.2.jpg') }}" class="d-block w-100"
-                                    alt="Property image 2">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="{{ url_for('static', filename='img/dep2.3.jpg') }}" class="d-block w-100"
-                                    alt="Property image 3">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="{{ url_for('static', filename='img/dep2.4.jpg') }}" class="d-block w-100"
-                                    alt="Property image 4">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="{{ url_for('static', filename='img/dep2.5.jpg') }}" class="d-block w-100"
-                                    alt="Property image 5">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="{{ url_for('static', filename='img/dep2.6.jpg') }}" class="d-block w-100"
-                                    alt="Property image 6">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="{{ url_for('static', filename='img/dep2.7.jpg') }}" class="d-block w-100"
-                                    alt="Property image 7">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="{{ url_for('static', filename='img/dep2.8.jpg') }}" class="d-block w-100"
-                                    alt="Property image 8">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="{{ url_for('static', filename='img/dep2.9.jpg') }}" class="d-block w-100"
-                                    alt="Property image 9">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="{{ url_for('static', filename='img/dep2.10.jpg') }}" class="d-block w-100"
-                                    alt="Property image 10">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="{{ url_for('static', filename='img/dep2.11.jpg') }}" class="d-block w-100"
-                                    alt="Property image 11">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="{{ url_for('static', filename='img/dep2.12.jpg') }}" class="d-block w-100"
-                                    alt="Property image 12">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="{{ url_for('static', filename='img/dep2.13.jpg') }}" class="d-block w-100"
-                                    alt="Property image 13">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="{{ url_for('static', filename='img/dep2.14.jpg') }}" class="d-block w-100"
-                                    alt="Property image 14">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="{{ url_for('static', filename='img/dep2.15.jpg') }}" class="d-block w-100"
-                                    alt="Property image 15">
-                            </div>
-                        </div>
-
-
-
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselProperty2"
-                            data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselProperty2"
-                            data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
+        <!-- Modal para Property 2 -->
+        <div class="modal fade" id="propertyModal2" tabindex="-1" aria-labelledby="propertyModalLabel2"
+            aria-hidden="true">
+            <div class="modal-dialog modal-xl modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="propertyModalLabel2">Luxury Penthouse - $3,200/month</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
+                    <div class="modal-body">
+                        <div id="carouselProperty2" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-indicators">
+                                <button type="button" data-bs-target="#carouselProperty2" data-bs-slide-to="0"
+                                    class="active" aria-current="true" aria-label="Slide 1"></button>
+                                <button type="button" data-bs-target="#carouselProperty2" data-bs-slide-to="1"
+                                    aria-label="Slide 2"></button>
+                                <button type="button" data-bs-target="#carouselProperty2" data-bs-slide-to="2"
+                                    aria-label="Slide 3"></button>
 
-                    <div class="property-details mt-4">
-                        <h4>Ocean View Apartment - Macondo 5th Avenue</h4>
-                        <p><i class="fas fa-map-marker-alt"></i> 5th Avenue & 48th Street, Playa del Carmen (Zazil-ha /
-                            Colosio)</p>
+                                <button type="button" data-bs-target="#carouselProperty2" data-bs-slide-to="3"
+                                    aria-label="Slide 4"></button>
 
-                        <div class="row mt-3">
-                            <div class="col-md-6">
-                                <h5>Details</h5>
-                                <ul class="list-unstyled">
-                                    <li><strong>Type:</strong> Apartment</li>
-                                    <li><strong>Bedrooms:</strong> 1 (King size bed)</li>
-                                    <li><strong>Bathrooms:</strong> 1</li>
-                                    <li><strong>Area:</strong> —</li>
-                                    <li><strong>Floor:</strong> 5th</li>
-                                    <li><strong>Fully Furnished:</strong> Yes</li>
-                                    <li><strong>View:</strong> Ocean view from the balcony</li>
-                                    <li><strong>In-Suite Laundry:</strong> Washer included</li>
-                                    <li><strong>Internet:</strong> High-speed</li>
-                                    <li><strong>TV:</strong> Smart TV</li>
-                                    <li><strong>Air Conditioning:</strong> Yes</li>
-                                    <li><strong>Pet Friendly:</strong> Upon approval 🐶</li>
-                                </ul>
+                                <button type="button" data-bs-target="#carouselProperty2" data-bs-slide-to="4"
+                                    aria-label="Slide 5"></button>
+
+                                <button type="button" data-bs-target="#carouselProperty2" data-bs-slide-to="5"
+                                    aria-label="Slide 6"></button>
+
+                                <button type="button" data-bs-target="#carouselProperty2" data-bs-slide-to="6"
+                                    aria-label="Slide 7"></button>
+
+                                <button type="button" data-bs-target="#carouselProperty2" data-bs-slide-to="7"
+                                    aria-label="Slide 8"></button>
+
+                                <button type="button" data-bs-target="#carouselProperty2" data-bs-slide-to="8"
+                                    aria-label="Slide 9"></button>
+
+                                <button type="button" data-bs-target="#carouselProperty2" data-bs-slide-to="9"
+                                    aria-label="Slide 10"></button>
+
+                                <button type="button" data-bs-target="#carouselProperty2" data-bs-slide-to="10"
+                                    aria-label="Slide 11"></button>
+
+                                <button type="button" data-bs-target="#carouselProperty2" data-bs-slide-to="11"
+                                    aria-label="Slide 12"></button>
+
+                                <button type="button" data-bs-target="#carouselProperty2" data-bs-slide-to="12"
+                                    aria-label="Slide 13"></button>
+                                <button type="button" data-bs-target="#carouselProperty2" data-bs-slide-to="13"
+                                    aria-label="Slide 14"></button>
+
+
                             </div>
-                            <div class="col-md-6">
-                                <h5>Amenities</h5>
-                                <ul class="list-unstyled">
-                                    <li><i class="fas fa-check text-success"></i> 2 Rooftop pools with ocean view</li>
-                                    <li><i class="fas fa-check text-success"></i> 2 Sky-bars</li>
-                                    <li><i class="fas fa-check text-success"></i> Pickleball court</li>
-                                    <li><i class="fas fa-check text-success"></i> Gym</li>
-                                    <li><i class="fas fa-check text-success"></i> Sun beds & lounge chairs</li>
-                                    <li><i class="fas fa-check text-success"></i> Underground parking</li>
-                                    <li><i class="fas fa-check text-success"></i> 24h Security</li>
-                                    <li><i class="fas fa-check text-success"></i> 24h Reception</li>
-                                    <li><i class="fas fa-check text-success"></i> No contract fees</li>
-                                </ul>
+
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img src="{{ url_for('static', filename='img/dep2/dep2.2.jpg') }}"
+                                        class="d-block w-100" alt="Property image 1">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="{{ url_for('static', filename='img/dep2/dep2.4.jpg') }}"
+                                        class="d-block w-100" alt="Property image 2">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="{{ url_for('static', filename='img/dep2/dep2.5.jpg') }}"
+                                        class="d-block w-100" alt="Property image 3">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="{{ url_for('static', filename='img/dep2/dep2.6.jpg') }}"
+                                        class="d-block w-100" alt="Property image 4">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="{{ url_for('static', filename='img/dep2/dep2.7.jpg') }}"
+                                        class="d-block w-100" alt="Property image 5">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="{{ url_for('static', filename='img/dep2/dep2.8.jpg') }}"
+                                        class="d-block w-100" alt="Property image 6">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="{{ url_for('static', filename='img/dep2/dep2.9.jpg') }}"
+                                        class="d-block w-100" alt="Property image 7">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="{{ url_for('static', filename='img/dep2/dep2.10.jpg') }}"
+                                        class="d-block w-100" alt="Property image 8">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="{{ url_for('static', filename='img/dep2/dep2.11.jpg') }}"
+                                        class="d-block w-100" alt="Property image 9">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="{{ url_for('static', filename='img/dep2/dep2.12.jpg') }}"
+                                        class="d-block w-100" alt="Property image 10">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="{{ url_for('static', filename='img/dep2/dep2.13.jpg') }}"
+                                        class="d-block w-100" alt="Property image 11">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="{{ url_for('static', filename='img/dep2/dep2.14.jpg') }}"
+                                        class="d-block w-100" alt="Property image 12">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="{{ url_for('static', filename='img/dep2/dep2.15.jpg') }}"
+                                        class="d-block w-100" alt="Property image 13">
+                                </div>
+
+                            </div>
+
+
+
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselProperty2"
+                                data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carouselProperty2"
+                                data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
+
+                        <div class="property-details mt-4">
+                            <h4>Ocean View Apartment - Macondo 5th Avenue</h4>
+                            <p><i class="fas fa-map-marker-alt"></i> 5th Avenue & 48th Street, Playa del Carmen
+                                (Zazil-ha /
+                                Colosio)</p>
+
+                            <div class="row mt-3">
+                                <div class="col-md-6">
+                                    <h5>Details</h5>
+                                    <ul class="list-unstyled">
+                                        <li><strong>Type:</strong> Apartment</li>
+                                        <li><strong>Bedrooms:</strong> 1 (King size bed)</li>
+                                        <li><strong>Bathrooms:</strong> 1</li>
+                                        <li><strong>Area:</strong> —</li>
+                                        <li><strong>Floor:</strong> 5th</li>
+                                        <li><strong>Fully Furnished:</strong> Yes</li>
+                                        <li><strong>View:</strong> Ocean view from the balcony</li>
+                                        <li><strong>In-Suite Laundry:</strong> Washer included</li>
+                                        <li><strong>Internet:</strong> High-speed</li>
+                                        <li><strong>TV:</strong> Smart TV</li>
+                                        <li><strong>Air Conditioning:</strong> Yes</li>
+                                        <li><strong>Pet Friendly:</strong> Upon approval 🐶</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <h5>Amenities</h5>
+                                    <ul class="list-unstyled">
+                                        <li><i class="fas fa-check text-success"></i> 2 Rooftop pools with ocean view
+                                        </li>
+                                        <li><i class="fas fa-check text-success"></i> 2 Sky-bars</li>
+                                        <li><i class="fas fa-check text-success"></i> Pickleball court</li>
+                                        <li><i class="fas fa-check text-success"></i> Gym</li>
+                                        <li><i class="fas fa-check text-success"></i> Sun beds & lounge chairs</li>
+                                        <li><i class="fas fa-check text-success"></i> Underground parking</li>
+                                        <li><i class="fas fa-check text-success"></i> 24h Security</li>
+                                        <li><i class="fas fa-check text-success"></i> 24h Reception</li>
+                                        <li><i class="fas fa-check text-success"></i> No contract fees</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="mt-4">
+                                <h5>Description</h5>
+                                <p>
+                                    🏖️ Ocean view of the Mexican Caribbean just steps from Coco Beach.
+                                    Modern and stylish 1-bedroom apartment located in the heart of Playa del Carmen on
+                                    5th
+                                    Avenue.
+                                    Fully equipped with everything you need — electric stove, in-suite washer, smart TV,
+                                    high-speed internet, and more.
+                                    Perfect for a short vacation or a long-term stay!
+                                </p>
+                                <p>
+                                    🌟 Enjoy access to luxurious amenities including rooftop pools with ocean views, a
+                                    pickleball court, gym, sky-bars, and 24/7 security and reception.
+                                </p>
+                                <p>
+                                    📍 Just a 5-minute walk to the beach in one of the most vibrant and central
+                                    neighborhoods in Playa del Carmen.
+                                </p>
                             </div>
                         </div>
 
-                        <div class="mt-4">
-                            <h5>Description</h5>
-                            <p>
-                                🏖️ Ocean view of the Mexican Caribbean just steps from Coco Beach.
-                                Modern and stylish 1-bedroom apartment located in the heart of Playa del Carmen on 5th
-                                Avenue.
-                                Fully equipped with everything you need — electric stove, in-suite washer, smart TV,
-                                high-speed internet, and more.
-                                Perfect for a short vacation or a long-term stay!
-                            </p>
-                            <p>
-                                🌟 Enjoy access to luxurious amenities including rooftop pools with ocean views, a
-                                pickleball court, gym, sky-bars, and 24/7 security and reception.
-                            </p>
-                            <p>
-                                📍 Just a 5-minute walk to the beach in one of the most vibrant and central
-                                neighborhoods in Playa del Carmen.
-                            </p>
-                        </div>
                     </div>
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <a href="https://wa.me/529983074424" target="_blank" class="btn btn-primary">Contact Agent</a>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <a href="https://wa.me/529983074424" target="_blank" class="btn btn-primary">Contact Agent</a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- Modal para Property 3 -->
-    <div class="modal fade" id="propertyModal3" tabindex="-1" aria-labelledby="propertyModalLabel3" aria-hidden="true">
-        <div class="modal-dialog modal-xl modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="propertyModalLabel3">Country Villa - $1,200,000</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div id="carouselProperty3" class="carousel slide" data-bs-ride="carousel">
-                        <div class="carousel-indicators">
-                            <button type="button" data-bs-target="#carouselProperty3" data-bs-slide-to="0"
-                                class="active" aria-current="true" aria-label="Slide 1"></button>
-                            <button type="button" data-bs-target="#carouselProperty3" data-bs-slide-to="1"
-                                aria-label="Slide 2"></button>
-                            <button type="button" data-bs-target="#carouselProperty3" data-bs-slide-to="2"
-                                aria-label="Slide 3"></button>
-                        </div>
-                        <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <img src="https://images.unsplash.com/photo-1605276374104-dee2a0ed3cd6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
-                                    class="d-block w-100" alt="Property image 1">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="{{ url_for('static', filename='img/playa.jpg') }}" class="d-block w-100"
-                                    alt="Property image 2">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="{{ url_for('static', filename='img/mg.jpg') }}" class="d-block w-100"
-                                    alt="Property image 3">
-                            </div>
-                        </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselProperty3"
-                            data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselProperty3"
-                            data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
+
+        <!-- Modal para Property 3 - Modern Studio -->
+        <div class="modal fade" id="propertyModal3" tabindex="-1" aria-labelledby="propertyModalLabel3"
+            aria-hidden="true">
+            <div class="modal-dialog modal-xl modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header bg-light">
+                        <h5 class="modal-title" id="propertyModalLabel3">Modern Studio with Ocean View - Macondo 5th
+                            Avenue</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-
-                    <div class="property-details mt-4">
-                        <h4>Country Villa in Residential Area</h4>
-                        <p><i class="fas fa-map-marker-alt"></i> Residential Area, Countryside</p>
-
-                        <div class="row mt-3">
-                            <div class="col-md-6">
-                                <h5>Details</h5>
-                                <ul class="list-unstyled">
-                                    <li><strong>Type:</strong> Villa</li>
-                                    <li><strong>Bedrooms:</strong> 5</li>
-                                    <li><strong>Bathrooms:</strong> 4</li>
-                                    <li><strong>Area:</strong> 450 m²</li>
-                                    <li><strong>Land:</strong> 1,200 m²</li>
-                                </ul>
+                    <div class="modal-body">
+                        <!-- Carousel -->
+                        <div id="carouselProperty3" class="carousel slide shadow-sm" data-bs-ride="carousel">
+                            <div class="carousel-indicators">
+                                <button type="button" data-bs-target="#carouselProperty3" data-bs-slide-to="0"
+                                    class="active" aria-current="true" aria-label="Slide 1"></button>
+                                <button type="button" data-bs-target="#carouselProperty3" data-bs-slide-to="1"
+                                    aria-label="Slide 2"></button>
+                                <button type="button" data-bs-target="#carouselProperty3" data-bs-slide-to="2"
+                                    aria-label="Slide 3"></button>
+                                <button type="button" data-bs-target="#carouselProperty3" data-bs-slide-to="3"
+                                    aria-label="Slide 4"></button>
+                                <button type="button" data-bs-target="#carouselProperty3" data-bs-slide-to="4"
+                                    aria-label="Slide 5"></button>
+                                <button type="button" data-bs-target="#carouselProperty3" data-bs-slide-to="5"
+                                    aria-label="Slide 6"></button>
+                                <button type="button" data-bs-target="#carouselProperty3" data-bs-slide-to="6"
+                                    aria-label="Slide 7"></button>
+                                <button type="button" data-bs-target="#carouselProperty3" data-bs-slide-to="7"
+                                    aria-label="Slide 8"></button>
+                                <button type="button" data-bs-target="#carouselProperty3" data-bs-slide-to="8"
+                                    aria-label="Slide 9"></button>
+                                <button type="button" data-bs-target="#carouselProperty3" data-bs-slide-to="9"
+                                    aria-label="Slide 10"></button>
+                                <button type="button" data-bs-target="#carouselProperty3" data-bs-slide-to="10"
+                                    aria-label="Slide 11"></button>
+                                <button type="button" data-bs-target="#carouselProperty3" data-bs-slide-to="11"
+                                    aria-label="Slide 12"></button>
+                                <button type="button" data-bs-target="#carouselProperty3" data-bs-slide-to="12"
+                                    aria-label="Slide 13"></button>
+                                <button type="button" data-bs-target="#carouselProperty3" data-bs-slide-to="13"
+                                    aria-label="Slide 14"></button>
+                                <button type="button" data-bs-target="#carouselProperty3" data-bs-slide-to="14"
+                                    aria-label="Slide 15"></button>
                             </div>
-                            <div class="col-md-6">
-                                <h5>Amenities</h5>
-                                <ul class="list-unstyled">
-                                    <li><i class="fas fa-check text-success"></i> Swimming Pool</li>
-                                    <li><i class="fas fa-check text-success"></i> Garden</li>
-                                    <li><i class="fas fa-check text-success"></i> Guest House</li>
-                                    <li><i class="fas fa-check text-success"></i> Fireplace</li>
-                                    <li><i class="fas fa-check text-success"></i> Outdoor Kitchen</li>
-                                </ul>
+                            <div class="carousel-inner rounded">
+                                <div class="carousel-item active">
+                                    <img src="{{ url_for('static', filename='img/dep3/dep3.2.jpg') }}"
+                                        class="d-block w-100" alt="Studio image 1">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="{{ url_for('static', filename='img/dep3/dep3.3.jpg') }}"
+                                        class="d-block w-100" alt="Studio image 2">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="{{ url_for('static', filename='img/dep3/dep3.4.jpg') }}"
+                                        class="d-block w-100" alt="Studio image 3">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="{{ url_for('static', filename='img/dep3/dep3.5.jpg') }}"
+                                        class="d-block w-100" alt="Studio image 4">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="{{ url_for('static', filename='img/dep3/dep3.6.jpg') }}"
+                                        class="d-block w-100" alt="Studio image 5">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="{{ url_for('static', filename='img/dep3/dep3.7.jpg') }}"
+                                        class="d-block w-100" alt="Studio image 6">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="{{ url_for('static', filename='img/dep3/dep3.8.jpg') }}"
+                                        class="d-block w-100" alt="Studio image 7">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="{{ url_for('static', filename='img/dep3/dep3.9.jpg') }}"
+                                        class="d-block w-100" alt="Studio image 8">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="{{ url_for('static', filename='img/dep3/dep3.10.jpg') }}"
+                                        class="d-block w-100" alt="Studio image 9">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="{{ url_for('static', filename='img/dep3/dep3.11.jpg') }}"
+                                        class="d-block w-100" alt="Studio image 10">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="{{ url_for('static', filename='img/dep3/dep3.12.jpg') }}"
+                                        class="d-block w-100" alt="Studio image 11">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="{{ url_for('static', filename='img/dep3/dep3.13.jpg') }}"
+                                        class="d-block w-100" alt="Studio image 12">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="{{ url_for('static', filename='img/dep3/dep3.14.jpg') }}"
+                                        class="d-block w-100" alt="Studio image 13">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="{{ url_for('static', filename='img/dep3/dep3.15.jpg') }}"
+                                        class="d-block w-100" alt="Studio image 14">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="{{ url_for('static', filename='img/dep3/dep3.16.jpg') }}"
+                                        class="d-block w-100" alt="Studio image 15">
+                                </div>
                             </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselProperty3"
+                                data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carouselProperty3"
+                                data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
                         </div>
 
-                        <div class="mt-4">
-                            <h5>Description</h5>
-                            <p>Beautiful country villa surrounded by nature. This property features a spacious main
-                                house with 5 bedrooms and a separate guest house. The property includes a large garden
-                                with fruit trees, a swimming pool, and outdoor entertainment areas. The interior
-                                combines rustic charm with modern comforts, featuring exposed beams, stone walls, and a
-                                gourmet kitchen.</p>
+                        <!-- Property Details -->
+                        <div class="property-details mt-4">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h4 class="mb-0">Modern Studio with Ocean View - Macondo 5th Avenue</h4>
+                                <span class="badge bg-warning text-dark">For Rent</span>
+                            </div>
+                            <p class="text-muted"><i class="fas fa-map-marker-alt text-danger"></i> 5th Avenue & 48th
+                                Street, Playa del Carmen (Zazil-Ha / Colosio)</p>
+
+                            <div class="alert alert-info mt-3">
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-info-circle me-2 fs-4"></i>
+                                    <div>
+                                        <strong>Special Feature:</strong> Exclusive rooftop pickleball court and two sky
+                                        bars with panoramic ocean views
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row mt-4 g-4">
+                                <div class="col-md-6">
+                                    <div class="card h-100">
+                                        <div class="card-header bg-light">
+                                            <h5 class="mb-0"><i class="fas fa-home me-2"></i>Property Details</h5>
+                                        </div>
+                                        <div class="card-body">
+                                            <ul class="list-group list-group-flush">
+                                                <li class="list-group-item d-flex justify-content-between">
+                                                    <span><i class="fas fa-couch me-2 text-primary"></i>Type</span>
+                                                    <strong>Studio Apartment</strong>
+                                                </li>
+                                                <li class="list-group-item d-flex justify-content-between">
+                                                    <span><i
+                                                            class="fas fa-layer-group me-2 text-primary"></i>Floor</span>
+                                                    <strong>5th Floor</strong>
+                                                </li>
+                                                <li class="list-group-item d-flex justify-content-between">
+                                                    <span><i class="fas fa-bed me-2 text-primary"></i>Bedroom</span>
+                                                    <strong>1 (King size bed)</strong>
+                                                </li>
+                                                <li class="list-group-item d-flex justify-content-between">
+                                                    <span><i class="fas fa-bath me-2 text-primary"></i>Bathroom</span>
+                                                    <strong>1</strong>
+                                                </li>
+                                                <li class="list-group-item d-flex justify-content-between">
+                                                    <span><i
+                                                            class="fas fa-utensils me-2 text-primary"></i>Kitchen</span>
+                                                    <strong>Fully Equipped</strong>
+                                                </li>
+                                                <li class="list-group-item d-flex justify-content-between">
+                                                    <span><i class="fas fa-tshirt me-2 text-primary"></i>Laundry</span>
+                                                    <strong>In-suite washer</strong>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card h-100">
+                                        <div class="card-header bg-light">
+                                            <h5 class="mb-0"><i class="fas fa-star me-2"></i>Building Amenities</h5>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="row g-2">
+                                                <div class="col-6">
+                                                    <div class="p-2 border rounded text-center">
+                                                        <i class="fas fa-swimming-pool text-primary mb-1"></i>
+                                                        <small class="d-block">2 Rooftop Pools</small>
+                                                    </div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="p-2 border rounded text-center">
+                                                        <i class="fas fa-cocktail text-primary mb-1"></i>
+                                                        <small class="d-block">2 Sky Bars</small>
+                                                    </div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="p-2 border rounded text-center">
+                                                        <i class="fas fa-table-tennis text-primary mb-1"></i>
+                                                        <small class="d-block">Pickleball Court</small>
+                                                    </div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="p-2 border rounded text-center">
+                                                        <i class="fas fa-dumbbell text-primary mb-1"></i>
+                                                        <small class="d-block">Gym</small>
+                                                    </div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="p-2 border rounded text-center">
+                                                        <i class="fas fa-car text-primary mb-1"></i>
+                                                        <small class="d-block">Underground Parking</small>
+                                                    </div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="p-2 border rounded text-center">
+                                                        <i class="fas fa-shield-alt text-primary mb-1"></i>
+                                                        <small class="d-block">24h Security</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card mt-4">
+                                <div class="card-header bg-light">
+                                    <h5 class="mb-0"><i class="fas fa-align-left me-2"></i>Property Description</h5>
+                                </div>
+                                <div class="card-body">
+                                    <p>Modern top-floor studio with breathtaking views of the Mexican Caribbean, just a
+                                        few steps from the beach. Located in the exclusive Macondo building, this unit
+                                        is perfect for short or long stays.</p>
+
+                                    <h6 class="mt-4">Interior Features:</h6>
+                                    <ul class="list-icon">
+                                        <li>Fully furnished with contemporary design</li>
+                                        <li>King size bed with premium linens</li>
+                                        <li>Modern bathroom with quality fixtures</li>
+                                        <li>Electric stove and fully equipped kitchen</li>
+                                        <li>Smart TV and high-speed internet</li>
+                                        <li>Air conditioning throughout</li>
+                                        <li>Balcony with ocean view</li>
+                                    </ul>
+
+                                    <h6 class="mt-4">Building Highlights:</h6>
+                                    <ul class="list-icon">
+                                        <li>Two spectacular rooftop pools with ocean views</li>
+                                        <li>Two sky bars for sunset cocktails</li>
+                                        <li>Exclusive rooftop pickleball court</li>
+                                        <li>State-of-the-art fitness center</li>
+                                        <li>Sun beds and lounge chairs for relaxation</li>
+                                        <li>24-hour reception and security</li>
+                                    </ul>
+
+                                    <h6 class="mt-4">Location Benefits:</h6>
+                                    <ul class="list-icon">
+                                        <li>Located in the heart of Zazil-Ha/Colosio area</li>
+                                        <li>Walking distance to Coco Beach</li>
+                                        <li>Close to 5th Avenue's restaurants and shops</li>
+                                        <li>Easy access to artisan markets and local cafés</li>
+                                        <li>Tranquil residential atmosphere</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="card mt-4">
+                                <div class="card-header bg-light">
+                                    <h5 class="mb-0"><i class="fas fa-file-signature me-2"></i>Rental Terms</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <ul class="list-group list-group-flush">
+                                                <li class="list-group-item d-flex justify-content-between">
+                                                    <span>Availability</span>
+                                                    <strong>Short & Long-term</strong>
+                                                </li>
+                                                <li class="list-group-item d-flex justify-content-between">
+                                                    <span>Included Utilities</span>
+                                                    <strong>Water & Maintenance</strong>
+                                                </li>
+                                                <li class="list-group-item d-flex justify-content-between">
+                                                    <span>Additional Costs</span>
+                                                    <strong>Electricity & Internet</strong>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <ul class="list-group list-group-flush">
+                                                <li class="list-group-item d-flex justify-content-between">
+                                                    <span>Pet Policy</span>
+                                                    <strong>Allowed with approval</strong>
+                                                </li>
+                                                <li class="list-group-item d-flex justify-content-between">
+                                                    <span>Contract Fees</span>
+                                                    <strong>None</strong>
+                                                </li>
+                                                <li class="list-group-item d-flex justify-content-between">
+                                                    <span>Minimum Stay</span>
+                                                    <strong>3 nights</strong>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <a href="https://wa.me/529983074424" target="_blank" class="btn btn-primary">Contact Agent</a>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <a href="https://wa.me/529983074424" target="_blank" class="btn btn-primary">Contact Agent</a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+
+
+
+        <!-- Modal para Property 4 - Departamento en Gran Coral -->
+        <div class="modal fade" id="propertyModal4" tabindex="-1" aria-labelledby="propertyModalLabel4"
+            aria-hidden="true">
+            <div class="modal-dialog modal-xl modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header bg-light">
+                        <h5 class="modal-title" id="propertyModalLabel4">Exclusive Apartment in Gran Coral - $850,000
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- Carousel -->
+                        <div id="carouselProperty4" class="carousel slide shadow-sm" data-bs-ride="carousel">
+                            <div class="carousel-indicators">
+                                <button type="button" data-bs-target="#carouselProperty4" data-bs-slide-to="0"
+                                    class="active" aria-current="true" aria-label="Slide 1"></button>
+                                <button type="button" data-bs-target="#carouselProperty4" data-bs-slide-to="1"
+                                    aria-label="Slide 2"></button>
+                                <button type="button" data-bs-target="#carouselProperty4" data-bs-slide-to="2"
+                                    aria-label="Slide 3"></button>
+                                <button type="button" data-bs-target="#carouselProperty4" data-bs-slide-to="3"
+                                    aria-label="Slide 4"></button>
+                                <button type="button" data-bs-target="#carouselProperty4" data-bs-slide-to="4"
+                                    aria-label="Slide 5"></button>
+                                <button type="button" data-bs-target="#carouselProperty4" data-bs-slide-to="5"
+                                    aria-label="Slide 6"></button>
+                                <button type="button" data-bs-target="#carouselProperty4" data-bs-slide-to="6"
+                                    aria-label="Slide 7"></button>
+                                <button type="button" data-bs-target="#carouselProperty4" data-bs-slide-to="7"
+                                    aria-label="Slide 8"></button>
+                                <button type="button" data-bs-target="#carouselProperty4" data-bs-slide-to="8"
+                                    aria-label="Slide 9"></button>
+                                <button type="button" data-bs-target="#carouselProperty4" data-bs-slide-to="9"
+                                    aria-label="Slide 10"></button>
+                                <button type="button" data-bs-target="#carouselProperty4" data-bs-slide-to="10"
+                                    aria-label="Slide 11"></button>
+                                <button type="button" data-bs-target="#carouselProperty4" data-bs-slide-to="11"
+                                    aria-label="Slide 12"></button>
+                                <button type="button" data-bs-target="#carouselProperty4" data-bs-slide-to="12"
+                                    aria-label="Slide 13"></button>
+                                <button type="button" data-bs-target="#carouselProperty4" data-bs-slide-to="13"
+                                    aria-label="Slide 14"></button>
+                                <button type="button" data-bs-target="#carouselProperty4" data-bs-slide-to="14"
+                                    aria-label="Slide 15"></button>
+                                <button type="button" data-bs-target="#carouselProperty4" data-bs-slide-to="15"
+                                    aria-label="Slide 16"></button>
+
+
+                            </div>
+                            <div class="carousel-inner rounded">
+                                <div class="carousel-item active">
+                                    <img src="{{ url_for('static', filename='img/dep4/dep4.1.jpg') }}"
+                                        class="d-block w-100" alt="Apartment image 1">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="{{ url_for('static', filename='img/dep4/dep4.2.jpg') }}"
+                                        class="d-block w-100" alt="Apartment image 2">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="{{ url_for('static', filename='img/dep4/dep4.3.jpg') }}"
+                                        class="d-block w-100" alt="Apartment image 3">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="{{ url_for('static', filename='img/dep4/dep4.4.jpg') }}"
+                                        class="d-block w-100" alt="Apartment image 4">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="{{ url_for('static', filename='img/dep4/dep4.5.jpg') }}"
+                                        class="d-block w-100" alt="Apartment image 5">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="{{ url_for('static', filename='img/dep4/dep4.6.jpg') }}"
+                                        class="d-block w-100" alt="Apartment image 6">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="{{ url_for('static', filename='img/dep4/dep4.7.jpg') }}"
+                                        class="d-block w-100" alt="Apartment image 7">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="{{ url_for('static', filename='img/dep4/dep4.8.jpg') }}"
+                                        class="d-block w-100" alt="Apartment image 8">
+                                </div>
+
+                                <div class="carousel-item">
+                                    <img src="{{ url_for('static', filename='img/dep4/dep4.10.jpg') }}"
+                                        class="d-block w-100" alt="Apartment image 10">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="{{ url_for('static', filename='img/dep4/dep4.11.jpg') }}"
+                                        class="d-block w-100" alt="Apartment image 11">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="{{ url_for('static', filename='img/dep4/dep4.12.jpg') }}"
+                                        class="d-block w-100" alt="Apartment image 12">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="{{ url_for('static', filename='img/dep4/dep4.13.jpg') }}"
+                                        class="d-block w-100" alt="Apartment image 13">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="{{ url_for('static', filename='img/dep4/dep4.14.jpg') }}"
+                                        class="d-block w-100" alt="Apartment image 14">
+                                </div>
+                                <!-- dep4.15.jpg está omitida -->
+                                <div class="carousel-item">
+                                    <img src="{{ url_for('static', filename='img/dep4/dep4.16.jpg') }}"
+                                        class="d-block w-100" alt="Apartment image 16">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="{{ url_for('static', filename='img/dep4/dep4.17.jpg') }}"
+                                        class="d-block w-100" alt="Apartment image 17">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="{{ url_for('static', filename='img/dep4/dep4.18.jpg') }}"
+                                        class="d-block w-100" alt="Apartment image 18">
+                                </div>
+                            </div>
+
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselProperty4"
+                                data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carouselProperty4"
+                                data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
+
+                        <!-- Property Details -->
+                        <div class="property-details mt-4">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h4 class="mb-0">Exclusive Apartment in Gran Coral By Lorena Ochoa</h4>
+                                <span class="badge bg-success">For Sale</span>
+                            </div>
+                            <p class="text-muted"><i class="fas fa-map-marker-alt text-danger"></i> Gran Coral
+                                Residential, Playa del Carmen</p>
+
+                            <div class="alert alert-info mt-3">
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-info-circle me-2 fs-4"></i>
+                                    <div>
+                                        <strong>Special Feature:</strong> Includes active membership for golf club and
+                                        beach club (available at additional cost)
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row mt-4 g-4">
+                                <div class="col-md-6">
+                                    <div class="card h-100">
+                                        <div class="card-header bg-light">
+                                            <h5 class="mb-0"><i class="fas fa-home me-2"></i>Property Details</h5>
+                                        </div>
+                                        <div class="card-body">
+                                            <ul class="list-group list-group-flush">
+                                                <li class="list-group-item d-flex justify-content-between">
+                                                    <span><i class="fas fa-bed me-2 text-primary"></i>Bedrooms</span>
+                                                    <strong>2</strong>
+                                                </li>
+                                                <li class="list-group-item d-flex justify-content-between">
+                                                    <span><i class="fas fa-bath me-2 text-primary"></i>Bathrooms</span>
+                                                    <strong>2 (main with full bath)</strong>
+                                                </li>
+                                                <li class="list-group-item d-flex justify-content-between">
+                                                    <span><i
+                                                            class="fas fa-ruler-combined me-2 text-primary"></i>Size</span>
+                                                    <strong>119 m²</strong>
+                                                </li>
+                                                <li class="list-group-item d-flex justify-content-between">
+                                                    <span><i class="fas fa-calendar-alt me-2 text-primary"></i>Year
+                                                        Built</span>
+                                                    <strong>2020</strong>
+                                                </li>
+                                                <li class="list-group-item d-flex justify-content-between">
+                                                    <span><i class="fas fa-dollar-sign me-2 text-primary"></i>HOA
+                                                        Fee</span>
+                                                    <strong>$5,580 MXN/month</strong>
+                                                </li>
+                                                <li class="list-group-item d-flex justify-content-between">
+                                                    <span><i
+                                                            class="fas fa-file-invoice-dollar me-2 text-primary"></i>Annual
+                                                        Tax</span>
+                                                    <strong>$6,252 MXN</strong>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card h-100">
+                                        <div class="card-header bg-light">
+                                            <h5 class="mb-0"><i class="fas fa-star me-2"></i>Features & Amenities</h5>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="row g-2">
+                                                <div class="col-6">
+                                                    <div class="p-2 border rounded text-center">
+                                                        <i class="fas fa-swimming-pool text-primary mb-1"></i>
+                                                        <small class="d-block">3 Pools</small>
+                                                    </div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="p-2 border rounded text-center">
+                                                        <i class="fas fa-dumbbell text-primary mb-1"></i>
+                                                        <small class="d-block">Gym</small>
+                                                    </div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="p-2 border rounded text-center">
+                                                        <i class="fas fa-spa text-primary mb-1"></i>
+                                                        <small class="d-block">SPA</small>
+                                                    </div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="p-2 border rounded text-center">
+                                                        <i class="fas fa-golf-ball text-primary mb-1"></i>
+                                                        <small class="d-block">Golf Club</small>
+                                                    </div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="p-2 border rounded text-center">
+                                                        <i class="fas fa-child text-primary mb-1"></i>
+                                                        <small class="d-block">Kids Area</small>
+                                                    </div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="p-2 border rounded text-center">
+                                                        <i class="fas fa-shield-alt text-primary mb-1"></i>
+                                                        <small class="d-block">24h Security</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card mt-4">
+                                <div class="card-header bg-light">
+                                    <h5 class="mb-0"><i class="fas fa-align-left me-2"></i>Property Description</h5>
+                                </div>
+                                <div class="card-body">
+                                    <p>Exclusive and comfortable apartment, very spacious and well equipped with
+                                        everything you need. The balcony overlooks the pool and the wonderful green
+                                        areas of the residential complex.</p>
+
+                                    <h6 class="mt-4">Interior Features:</h6>
+                                    <ul class="list-icon">
+                                        <li>2 bedrooms (main with full bathroom and dressing room)</li>
+                                        <li>Spacious living and dining area</li>
+                                        <li>Fully equipped kitchen with modern appliances</li>
+                                        <li>Bright spaces with natural light</li>
+                                    </ul>
+
+                                    <h6 class="mt-4">Community Amenities:</h6>
+                                    <ul class="list-icon">
+                                        <li>Elevator access</li>
+                                        <li>State-of-the-art gym and SPA facilities</li>
+                                        <li>Access to Golf Club (membership available)</li>
+                                        <li>3 swimming pools (including children's pool)</li>
+                                        <li>24-hour gated security</li>
+                                        <li>Designated kids play area</li>
+                                    </ul>
+
+                                    <h6 class="mt-4">Location Benefits:</h6>
+                                    <ul class="list-icon">
+                                        <li>Located in the exclusive Gran Coral residential area by Lorena Ochoa</li>
+                                        <li>Just 5 minutes by car from 5th Avenue and the beach</li>
+                                        <li>Perfect for lovers of tranquility, golf, and beach lifestyle</li>
+                                        <li>Close to premium shopping and dining options</li>
+                                    </ul>
+
+                                    <div class="alert alert-warning mt-3">
+                                        <strong>Note:</strong> This apartment includes an active membership for the golf
+                                        club and beach club (available at additional cost).
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <a href="https://wa.me/529983074424" target="_blank" class="btn btn-primary">Contact
+                            Agent</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--PROPIEDAD 5-->
+
+        <div class="modal fade" id="propertyModal5" tabindex="-1" aria-labelledby="propertyModalLabel5"
+            aria-hidden="true">
+            <div class="modal-dialog modal-xl modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header bg-light">
+                        <h5 class="modal-title" id="propertyModalLabel5">Apartment for Rent in Playa del Carmen - $2,500
+                            USD/month</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div id="carouselProperty5" class="carousel slide shadow-sm" data-bs-ride="carousel">
+                            <div class="carousel-indicators">
+                                <button type="button" data-bs-target="#carouselProperty5" data-bs-slide-to="0"
+                                    class="active" aria-current="true" aria-label="Slide 1"></button>
+                                <button type="button" data-bs-target="#carouselProperty5" data-bs-slide-to="1"
+                                    aria-label="Slide 2"></button>
+                                <button type="button" data-bs-target="#carouselProperty5" data-bs-slide-to="2"
+                                    aria-label="Slide 3"></button>
+                                <button type="button" data-bs-target="#carouselProperty5" data-bs-slide-to="3"
+                                    aria-label="Slide 4"></button>
+                                <button type="button" data-bs-target="#carouselProperty5" data-bs-slide-to="4"
+                                    aria-label="Slide 5"></button>
+                                <button type="button" data-bs-target="#carouselProperty5" data-bs-slide-to="5"
+                                    aria-label="Slide 6"></button>
+                                <button type="button" data-bs-target="#carouselProperty5" data-bs-slide-to="6"
+                                    aria-label="Slide 6"></button>
+                                <button type="button" data-bs-target="#carouselProperty5" data-bs-slide-to="7"
+                                    aria-label="Slide 6"></button>
+                                <button type="button" data-bs-target="#carouselProperty5" data-bs-slide-to="8"
+                                    aria-label="Slide 6"></button>
+                                <button type="button" data-bs-target="#carouselProperty5" data-bs-slide-to="9"
+                                    aria-label="Slide 6"></button>
+                                <button type="button" data-bs-target="#carouselProperty5" data-bs-slide-to="10"
+                                    aria-label="Slide 6"></button>
+                                <button type="button" data-bs-target="#carouselProperty5" data-bs-slide-to="11"
+                                    aria-label="Slide 6"></button>
+
+
+
+                            </div>
+                            <div class="carousel-inner rounded">
+                                <div class="carousel-item active">
+                                    <img src="{{ url_for('static', filename='img/dep5/dep5.1.jpg') }}"
+                                        class="d-block w-100" alt="Apartment image 1">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="{{ url_for('static', filename='img/dep5/dep5.2.jpg') }}"
+                                        class="d-block w-100" alt="Apartment image 2">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="{{ url_for('static', filename='img/dep5/dep5.3.jpg') }}"
+                                        class="d-block w-100" alt="Apartment image 3">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="{{ url_for('static', filename='img/dep5/dep5.4.jpg') }}"
+                                        class="d-block w-100" alt="Apartment image 4">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="{{ url_for('static', filename='img/dep5/dep5.5.jpg') }}"
+                                        class="d-block w-100" alt="Apartment image 5">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="{{ url_for('static', filename='img/dep5/dep5.6.jpg') }}"
+                                        class="d-block w-100" alt="Apartment image 6">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="{{ url_for('static', filename='img/dep5/dep5.7.jpg') }}"
+                                        class="d-block w-100" alt="Apartment image 6">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="{{ url_for('static', filename='img/dep5/dep5.8.jpg') }}"
+                                        class="d-block w-100" alt="Apartment image 6">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="{{ url_for('static', filename='img/dep5/dep5.9.jpg') }}"
+                                        class="d-block w-100" alt="Apartment image 6">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="{{ url_for('static', filename='img/dep5/dep5.10.jpg') }}"
+                                        class="d-block w-100" alt="Apartment image 6">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="{{ url_for('static', filename='img/dep5/dep5.11.jpg') }}"
+                                        class="d-block w-100" alt="Apartment image 6">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="{{ url_for('static', filename='img/dep5/dep5.12.jpg') }}"
+                                        class="d-block w-100" alt="Apartment image 6">
+                                </div>
+                            </div>
+
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselProperty5"
+                                data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carouselProperty5"
+                                data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
+
+                        <div class="property-details mt-4">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h4 class="mb-0">Apartment with Excellent Location and Amenities</h4>
+                                <span class="badge bg-primary">For Rent</span>
+                            </div>
+                            <p class="text-muted"><i class="fas fa-map-marker-alt text-danger"></i> Playa del Carmen</p>
+
+                            <div class="alert alert-info mt-3">
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-info-circle me-2 fs-4"></i>
+                                    <div>
+                                        <strong>Availability:</strong> Short and long-term rental. Fully furnished and
+                                        move-in ready!
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row mt-4 g-4">
+                                <div class="col-md-6">
+                                    <div class="card h-100">
+                                        <div class="card-header bg-light">
+                                            <h5 class="mb-0"><i class="fas fa-home me-2"></i>Property Details</h5>
+                                        </div>
+                                        <div class="card-body">
+                                            <ul class="list-group list-group-flush">
+                                                <li class="list-group-item d-flex justify-content-between">
+                                                    <span><i class="fas fa-bed me-2 text-primary"></i>Bedrooms</span>
+                                                    <strong>2</strong>
+                                                </li>
+                                                <li class="list-group-item d-flex justify-content-between">
+                                                    <span><i class="fas fa-bath me-2 text-primary"></i>Bathrooms</span>
+                                                    <strong>2</strong>
+                                                </li>
+                                                <li class="list-group-item d-flex justify-content-between">
+                                                    <span><i
+                                                            class="fas fa-ruler-combined me-2 text-primary"></i>Size</span>
+                                                    <strong>100 m²</strong>
+                                                </li>
+                                                <li class="list-group-item d-flex justify-content-between">
+                                                    <span><i class="fas fa-dollar-sign me-2 text-primary"></i>Monthly
+                                                        Rent</span>
+                                                    <strong>$2,500 USD</strong>
+                                                </li>
+                                                <li class="list-group-item d-flex justify-content-between">
+                                                    <span><i class="fas fa-paw me-2 text-primary"></i>Pets</span>
+                                                    <strong>Yes, pets allowed!</strong>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card h-100">
+                                        <div class="card-header bg-light">
+                                            <h5 class="mb-0"><i class="fas fa-star me-2"></i>Features & Amenities</h5>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="row g-2">
+                                                <div class="col-6">
+                                                    <div class="p-2 border rounded text-center">
+                                                        <i class="fas fa-swimming-pool text-primary mb-1"></i>
+                                                        <small class="d-block">2 Semi-Olympic Pools</small>
+                                                    </div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="p-2 border rounded text-center">
+                                                        <i class="fas fa-dumbbell text-primary mb-1"></i>
+                                                        <small class="d-block">Gym</small>
+                                                    </div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="p-2 border rounded text-center">
+                                                        <i class="fas fa-wifi text-primary mb-1"></i>
+                                                        <small class="d-block">Excellent WiFi</small>
+                                                    </div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="p-2 border rounded text-center">
+                                                        <i class="fas fa-car-alt text-primary mb-1"></i>
+                                                        <small class="d-block">Garage</small>
+                                                    </div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="p-2 border rounded text-center">
+                                                        <i class="fas fa-shield-alt text-primary mb-1"></i>
+                                                        <small class="d-block">24h Security</small>
+                                                    </div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="p-2 border rounded text-center">
+                                                        <i class="fas fa-water text-primary mb-1"></i>
+                                                        <small class="d-block">Ocean View (Rooftop)</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card mt-4">
+                                <div class="card-header bg-light">
+                                    <h5 class="mb-0"><i class="fas fa-align-left me-2"></i>Property Description</h5>
+                                </div>
+                                <div class="card-body">
+                                    <p>This apartment, ideal for short or long-term rental, is just steps from the beach
+                                        in Playa del Carmen. It offers an unbeatable location, great amenities, and
+                                        top-notch security.</p>
+
+                                    <p>It is <strong>fully furnished and move-in ready</strong>. Enjoy easy access to
+                                        everything from this perfectly located base.</p>
+
+                                    <h6 class="mt-4">Interior Features:</h6>
+                                    <ul class="list-icon">
+                                        <li>Fully furnished and equipped for your comfort.</li>
+                                        <li>Bright and cozy spaces.</li>
+                                        <li>Great WiFi connection.</li>
+                                    </ul>
+
+                                    <h6 class="mt-4">Condo Amenities:</h6>
+                                    <ul class="list-icon">
+                                        <li>Parking garage.</li>
+                                        <li>Two pools, including a semi-Olympic one.</li>
+                                        <li>Ocean view from the rooftop.</li>
+                                        <li>24-hour security.</li>
+                                        <li>Small gym on the second floor.</li>
+                                    </ul>
+
+                                    <h6 class="mt-4">Location Benefits:</h6>
+                                    <ul class="list-icon">
+                                        <li>Just a 3-minute walk to the beach.</li>
+                                        <li>One block from 5th Avenue.</li>
+                                        <li>Located in the most charming area of Playa del Carmen.</li>
+                                        <li>Close to restaurants, shops, and nightlife.</li>
+                                    </ul>
+
+                                    <div class="alert alert-warning mt-3">
+                                        <strong>Important!</strong> We are Pet Friendly.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <a href="https://wa.me/529983074424" target="_blank" class="btn btn-primary">Contact Agent</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- propiedad 6 -->
+        <div class="modal fade" id="propertyModal6" tabindex="-1" aria-labelledby="propertyModalLabel6"
+            aria-hidden="true">
+            <div class="modal-dialog modal-xl modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header bg-light">
+                        <h5 class="modal-title" id="propertyModalLabel6">2-Bedroom Lock-Off Condo in Aldea Zama - Tulum
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div id="carouselProperty6" class="carousel slide shadow-sm" data-bs-ride="carousel">
+                            <div class="carousel-indicators">
+                                <button type="button" data-bs-target="#carouselProperty6" data-bs-slide-to="0"
+                                    class="active" aria-current="true" aria-label="Slide 1"></button>
+                                <button type="button" data-bs-target="#carouselProperty6" data-bs-slide-to="1"
+                                    aria-label="Slide 2"></button>
+                                <button type="button" data-bs-target="#carouselProperty6" data-bs-slide-to="2"
+                                    aria-label="Slide 3"></button>
+                                <button type="button" data-bs-target="#carouselProperty6" data-bs-slide-to="3"
+                                    aria-label="Slide 4"></button>
+                                <button type="button" data-bs-target="#carouselProperty6" data-bs-slide-to="4"
+                                    aria-label="Slide 5"></button>
+                                <button type="button" data-bs-target="#carouselProperty6" data-bs-slide-to="5"
+                                    aria-label="Slide 6"></button>
+                                <button type="button" data-bs-target="#carouselProperty6" data-bs-slide-to="6"
+                                    aria-label="Slide 7"></button>
+                            </div>
+                            <div class="carousel-inner rounded">
+                                <div class="carousel-item active">
+                                    <img src="{{ url_for('static', filename='img/dep6/dep6.1.jpg') }}"
+                                        class="d-block w-100" alt="Condo image 1">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="{{ url_for('static', filename='img/dep6/dep6.2.jpg') }}"
+                                        class="d-block w-100" alt="Condo image 2">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="{{ url_for('static', filename='img/dep6/dep6.3.jpg') }}"
+                                        class="d-block w-100" alt="Condo image 3">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="{{ url_for('static', filename='img/dep6/dep6.4.jpg') }}"
+                                        class="d-block w-100" alt="Condo image 4">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="{{ url_for('static', filename='img/dep6/dep6.5.jpg') }}"
+                                        class="d-block w-100" alt="Condo image 5">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="{{ url_for('static', filename='img/dep6/dep6.6.jpg') }}"
+                                        class="d-block w-100" alt="Condo image 6">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="{{ url_for('static', filename='img/dep6/dep6.7.jpg') }}"
+                                        class="d-block w-100" alt="Condo image 7">
+                                </div>
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselProperty6"
+                                data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carouselProperty6"
+                                data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
+
+                        <div class="property-details mt-4">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h4 class="mb-0">Modern Lock-Off Condo in Aldea Zama</h4>
+                                <span class="badge bg-success">For Sale</span>
+                            </div>
+                            <p class="text-muted"><i class="fas fa-map-marker-alt text-danger"></i> Tulum, Quintana Roo
+                            </p>
+
+                            <div class="alert alert-info mt-3">
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-info-circle me-2 fs-4"></i>
+                                    <div><strong>Come check this out!</strong> 💥 Fully equipped and investment-ready!
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row mt-4 g-4">
+                                <div class="col-md-6">
+                                    <div class="card h-100">
+                                        <div class="card-header bg-light">
+                                            <h5 class="mb-0"><i class="fas fa-home me-2"></i>Property Details</h5>
+                                        </div>
+                                        <div class="card-body">
+                                            <ul class="list-group list-group-flush">
+                                                <li class="list-group-item d-flex justify-content-between"><span><i
+                                                            class="fas fa-bed me-2 text-primary"></i>Bedrooms</span><strong>2</strong>
+                                                </li>
+                                                <li class="list-group-item d-flex justify-content-between"><span><i
+                                                            class="fas fa-bath me-2 text-primary"></i>Bathrooms</span><strong>2</strong>
+                                                </li>
+                                                <li class="list-group-item d-flex justify-content-between"><span><i
+                                                            class="fas fa-ruler-combined me-2 text-primary"></i>Design</span><strong>Lock-Off</strong>
+                                                </li>
+                                                <li class="list-group-item d-flex justify-content-between"><span><i
+                                                            class="fas fa-couch me-2 text-primary"></i>Furnished</span><strong>Yes</strong>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="card h-100">
+                                        <div class="card-header bg-light">
+                                            <h5 class="mb-0"><i class="fas fa-star me-2"></i>Features & Amenities</h5>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="row g-2">
+                                                <div class="col-6">
+                                                    <div class="p-2 border rounded text-center"><i
+                                                            class="fas fa-shield-alt text-primary mb-1"></i><small
+                                                            class="d-block">24/7 Security</small></div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="p-2 border rounded text-center"><i
+                                                            class="fas fa-dumbbell text-primary mb-1"></i><small
+                                                            class="d-block">Gym</small></div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="p-2 border rounded text-center"><i
+                                                            class="fas fa-swimming-pool text-primary mb-1"></i><small
+                                                            class="d-block">Rooftop Pool</small></div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="p-2 border rounded text-center"><i
+                                                            class="fas fa-glass-martini text-primary mb-1"></i><small
+                                                            class="d-block">Sky Bar</small></div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="p-2 border rounded text-center"><i
+                                                            class="fas fa-video text-primary mb-1"></i><small
+                                                            class="d-block">Cinema</small></div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="p-2 border rounded text-center"><i
+                                                            class="fas fa-elevator text-primary mb-1"></i><small
+                                                            class="d-block">Elevator</small></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card mt-4">
+                                <div class="card-header bg-light">
+                                    <h5 class="mb-0"><i class="fas fa-align-left me-2"></i>Property Description</h5>
+                                </div>
+                                <div class="card-body">
+                                    <p>Located in Aldea Zama, this modern 2-bedroom lock-off condo offers comfort,
+                                        privacy, and style. Just minutes from downtown Tulum and the beach, it provides
+                                        an ideal investment opportunity in one of Mexico’s most desirable areas.</p>
+
+                                    <h6 class="mt-4">Interior Features:</h6>
+                                    <ul class="list-icon">
+                                        <li>Ceiling fan</li>
+                                        <li>Tile flooring</li>
+                                        <li>Fully-equipped kitchen</li>
+                                        <li>Modern finishes and lighting</li>
+                                    </ul>
+
+                                    <h6 class="mt-4">Exterior Features:</h6>
+                                    <ul class="list-icon">
+                                        <li>Deck and landscaped garden area</li>
+                                        <li>Swimming pool and swimming lane with glass bottom</li>
+                                    </ul>
+
+                                    <h6 class="mt-4">Additional Features:</h6>
+                                    <ul class="list-icon">
+                                        <li>Balcony</li>
+                                        <li>Controlled access</li>
+                                        <li>Fitness center</li>
+                                        <li>Lobby</li>
+                                        <li>Security guard on duty</li>
+                                    </ul>
+
+                                    <h6 class="mt-4">Cooling:</h6>
+                                    <ul class="list-icon">
+                                        <li>2 Window / Wall Units</li>
+                                        <li>Ceiling fan</li>
+                                    </ul>
+
+                                    <h6 class="mt-4">Utilities:</h6>
+                                    <ul class="list-icon">
+                                        <li>Public sewer and water system</li>
+                                    </ul>
+
+                                    <div class="alert alert-success mt-3">
+                                        <strong>Investment Tip:</strong> Excellent for vacation rental income in Riviera
+                                        Maya.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <a href="https://wa.me/529983074424" target="_blank" class="btn btn-primary">Contact Agent</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- propiedad 7 - Elena Residences -->
+        <div class="modal fade" id="propertyModal7" tabindex="-1" aria-labelledby="propertyModalLabel7"
+            aria-hidden="true">
+            <div class="modal-dialog modal-xl modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header bg-light">
+                        <h5 class="modal-title" id="propertyModalLabel7">Elena Residences - $89,777 USD</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div id="carouselProperty7" class="carousel slide shadow-sm" data-bs-ride="carousel">
+                            <div class="carousel-indicators">
+                                <button type="button" data-bs-target="#carouselProperty7" data-bs-slide-to="0"
+                                    class="active" aria-current="true" aria-label="Slide 1"></button>
+                                <button type="button" data-bs-target="#carouselProperty7" data-bs-slide-to="1"
+                                    aria-label="Slide 2"></button>
+                                <button type="button" data-bs-target="#carouselProperty7" data-bs-slide-to="2"
+                                    aria-label="Slide 3"></button>
+                                <button type="button" data-bs-target="#carouselProperty7" data-bs-slide-to="3"
+                                    aria-label="Slide 4"></button>
+                                <button type="button" data-bs-target="#carouselProperty7" data-bs-slide-to="4"
+                                    aria-label="Slide 5"></button>
+                                <button type="button" data-bs-target="#carouselProperty7" data-bs-slide-to="5"
+                                    aria-label="Slide 6"></button>
+                                <button type="button" data-bs-target="#carouselProperty7" data-bs-slide-to="6"
+                                    aria-label="Slide 7"></button>
+                            </div>
+                            <div class="carousel-inner rounded">
+                                <div class="carousel-item active">
+                                    <img src="{{ url_for('static', filename='img/dep7/dep7.1.jpg') }}"
+                                        class="d-block w-100" alt="Property image 1">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="{{ url_for('static', filename='img/dep7/dep7.2.jpg') }}"
+                                        class="d-block w-100" alt="Property image 2">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="{{ url_for('static', filename='img/dep7/dep7.3.jpg') }}"
+                                        class="d-block w-100" alt="Property image 3">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="{{ url_for('static', filename='img/dep7/dep7.4.jpg') }}"
+                                        class="d-block w-100" alt="Property image 4">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="{{ url_for('static', filename='img/dep7/dep7.5.jpg') }}"
+                                        class="d-block w-100" alt="Property image 5">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="{{ url_for('static', filename='img/dep7/dep7.6.jpg') }}"
+                                        class="d-block w-100" alt="Property image 6">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="{{ url_for('static', filename='img/dep7/dep7.7.jpg') }}"
+                                        class="d-block w-100" alt="Property image 7">
+                                </div>
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselProperty7"
+                                data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carouselProperty7"
+                                data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
+
+                        <div class="property-details mt-4">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h4 class="mb-0">Owner Highly Motivated!!!</h4>
+                                <span class="badge bg-success">For Sale</span>
+                            </div>
+                            <p class="text-muted"><i class="fas fa-map-marker-alt text-danger"></i> Tulum, Mexico</p>
+
+                            <div class="alert alert-warning mt-3">
+                                <i class="fas fa-bolt me-2"></i><strong>Come see it for yourself!</strong>
+                            </div>
+
+                            <div class="row mt-4 g-4">
+                                <div class="col-md-6">
+                                    <div class="card h-100">
+                                        <div class="card-header bg-light">
+                                            <h5 class="mb-0"><i class="fas fa-home me-2"></i>Unit Type</h5>
+                                        </div>
+                                        <div class="card-body">
+                                            <ul class="list-group list-group-flush">
+                                                <li class="list-group-item">Studio – 388 Sq Ft</li>
+                                                <li class="list-group-item">Starting at $89,777 USD</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card h-100">
+                                        <div class="card-header bg-light">
+                                            <h5 class="mb-0"><i class="fas fa-star me-2"></i>Property Features</h5>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="row g-2">
+                                                <div class="col-6">
+                                                    <div class="p-2 border rounded text-center">
+                                                        <i class="fas fa-swimming-pool text-primary mb-1"></i>
+                                                        <small class="d-block">Rooftop Pool</small>
+                                                    </div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="p-2 border rounded text-center">
+                                                        <i class="fas fa-sun text-primary mb-1"></i>
+                                                        <small class="d-block">Sun Deck</small>
+                                                    </div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="p-2 border rounded text-center">
+                                                        <i class="fas fa-dumbbell text-primary mb-1"></i>
+                                                        <small class="d-block">Gym</small>
+                                                    </div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="p-2 border rounded text-center">
+                                                        <i class="fas fa-shield-alt text-primary mb-1"></i>
+                                                        <small class="d-block">24h Security</small>
+                                                    </div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="p-2 border rounded text-center">
+                                                        <i class="fas fa-elevator text-primary mb-1"></i>
+                                                        <small class="d-block">Elevator</small>
+                                                    </div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="p-2 border rounded text-center">
+                                                        <i class="fas fa-glass-cheers text-primary mb-1"></i>
+                                                        <small class="d-block">Sky Bar</small>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="p-2 border rounded text-center">
+                                                        <i class="fas fa-mountain text-primary mb-1"></i>
+                                                        <small class="d-block">Scenic Views</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card mt-4">
+                                <div class="card-header bg-light">
+                                    <h5 class="mb-0"><i class="fas fa-align-left me-2"></i>Property Description</h5>
+                                </div>
+                                <div class="card-body">
+                                    <p><strong>Elena Residences</strong> offers a rare combination of comfort, modern
+                                        design, and long-term value. This boutique development features 50 fully
+                                        equipped condominiums with premium finishes, thoughtfully designed to withstand
+                                        Tulum’s warm tropical climate — ensuring both durability and timeless elegance.
+                                    </p>
+                                    <p>The residences offer spacious, contemporary interiors that blend seamlessly with
+                                        the natural surroundings, promoting a sustainable and elevated lifestyle in one
+                                        of Mexico’s fastest-growing destinations.</p>
+
+                                    <div class="alert alert-success mt-4 text-center">
+                                        ✨ Act fast to secure your unit! ✨
+                                    </div>
+
+                                    <p class="mt-3">📞 Contact us today to schedule a visit. Don’t miss this opportunity
+                                        to own your piece of paradise in Tulum!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <a href="https://wa.me/529983074424" target="_blank" class="btn btn-primary">Contact Agent</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- propiedad 8 -->
+        <div class="modal fade" id="propertyModal8" tabindex="-1" aria-labelledby="propertyModalLabel8"
+            aria-hidden="true">
+            <div class="modal-dialog modal-xl modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header bg-light">
+                        <h5 class="modal-title" id="propertyModalLabel8">💎 Punta Esmeralda - From $110,000 USD</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div id="carouselProperty8" class="carousel slide shadow-sm" data-bs-ride="carousel">
+                            <div class="carousel-indicators">
+                                <button type="button" data-bs-target="#carouselProperty8" data-bs-slide-to="0"
+                                    class="active" aria-current="true" aria-label="Slide 1"></button>
+                                <button type="button" data-bs-target="#carouselProperty8" data-bs-slide-to="1"
+                                    aria-label="Slide 2"></button>
+                                <button type="button" data-bs-target="#carouselProperty8" data-bs-slide-to="2"
+                                    aria-label="Slide 3"></button>
+                                <button type="button" data-bs-target="#carouselProperty8" data-bs-slide-to="3"
+                                    aria-label="Slide 4"></button>
+                                <button type="button" data-bs-target="#carouselProperty8" data-bs-slide-to="4"
+                                    aria-label="Slide 5"></button>
+                            </div>
+                            <div class="carousel-inner rounded">
+                                <div class="carousel-item active">
+                                    <img src="{{ url_for('static', filename='img/dep8/dep8.1.jpg') }}"
+                                        class="d-block w-100" alt="Property image 1">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="{{ url_for('static', filename='img/dep8/dep8.2.jpg') }}"
+                                        class="d-block w-100" alt="Property image 2">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="{{ url_for('static', filename='img/dep8/dep8.3.jpg') }}"
+                                        class="d-block w-100" alt="Property image 3">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="{{ url_for('static', filename='img/dep8/dep8.4.jpg') }}"
+                                        class="d-block w-100" alt="Property image 4">
+                                </div>
+                                <div class="carousel-item">
+                                    <img src="{{ url_for('static', filename='img/dep8/dep8.5.jpg') }}"
+                                        class="d-block w-100" alt="Property image 5">
+                                </div>
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselProperty8"
+                                data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carouselProperty8"
+                                data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
+
+                        <div class="property-details mt-4">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h4 class="mb-0">📍 Punta Esmeralda - Playa del Carmen</h4>
+                                <span class="badge bg-warning text-dark">Pre-Sale</span>
+                            </div>
+                            <p class="text-muted"><i class="fas fa-map-marker-alt text-danger"></i> 5ta Ave & Calle 110,
+                                Playa del Carmen</p>
+
+                            <div class="alert alert-warning mt-3">
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-bolt me-2 fs-4"></i>
+                                    <div><strong>Invest Early!</strong> Ocean-view studios & apartments from $110,000
+                                        USD. Delivery 2026.</div>
+                                </div>
+                            </div>
+
+                            <div class="row mt-4 g-4">
+                                <div class="col-md-6">
+                                    <div class="card h-100">
+                                        <div class="card-header bg-light">
+                                            <h5 class="mb-0"><i class="fas fa-home me-2"></i>Project Highlights</h5>
+                                        </div>
+                                        <div class="card-body">
+                                            <ul class="list-group list-group-flush">
+                                                <li class="list-group-item d-flex justify-content-between">
+                                                    <span><i class="fas fa-tag me-2 text-primary"></i>Starting
+                                                        Price</span>
+                                                    <strong>$110,000 USD</strong>
+                                                </li>
+                                                <li class="list-group-item d-flex justify-content-between">
+                                                    <span><i class="fas fa-calendar-alt me-2 text-primary"></i>Delivery
+                                                        Date</span>
+                                                    <strong>2026</strong>
+                                                </li>
+                                                <li class="list-group-item d-flex justify-content-between">
+                                                    <span><i
+                                                            class="fas fa-hotel me-2 text-primary"></i>Management</span>
+                                                    <strong>Condo-Hotel</strong>
+                                                </li>
+                                                <li class="list-group-item d-flex justify-content-between">
+                                                    <span><i
+                                                            class="fas fa-map-pin me-2 text-primary"></i>Location</span>
+                                                    <strong>Punta Esmeralda</strong>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="card h-100">
+                                        <div class="card-header bg-light">
+                                            <h5 class="mb-0"><i class="fas fa-star me-2"></i>Amenities</h5>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="row g-2">
+                                                <div class="col-6">
+                                                    <div class="p-2 border rounded text-center"><i
+                                                            class="fas fa-dumbbell text-primary mb-1"></i><small
+                                                            class="d-block">Gym</small></div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="p-2 border rounded text-center"><i
+                                                            class="fas fa-laptop-house text-primary mb-1"></i><small
+                                                            class="d-block">Coworking</small></div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="p-2 border rounded text-center"><i
+                                                            class="fas fa-swimming-pool text-primary mb-1"></i><small
+                                                            class="d-block">Rooftop Pool</small></div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="p-2 border rounded text-center"><i
+                                                            class="fas fa-cocktail text-primary mb-1"></i><small
+                                                            class="d-block">Bar & BBQ</small></div>
+                                                </div>
+                                                <div class="col-6">
+                                                    <div class="p-2 border rounded text-center"><i
+                                                            class="fas fa-store text-primary mb-1"></i><small
+                                                            class="d-block">Commercial Area</small></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card mt-4">
+                                <div class="card-header bg-light">
+                                    <h5 class="mb-0"><i class="fas fa-align-left me-2"></i>Description</h5>
+                                </div>
+                                <div class="card-body">
+                                    <p><strong>Macondo Punta Esmeralda</strong> is a pre-sale gem offering below-market
+                                        prices and high appreciation potential. Located steps from Punta Esmeralda
+                                        Beach, this project blends modern lifestyle with investment potential.</p>
+                                    <ul class="list-icon">
+                                        <li>Direct beach access</li>
+                                        <li>Only 5 minutes from 5th Avenue</li>
+                                        <li>50 minutes to Tulum or Cancun Airport</li>
+                                        <li>Surrounded by nature, yet fully connected</li>
+                                    </ul>
+
+                                    <div class="alert alert-info mt-3">
+                                        <strong>Why Invest?</strong>
+                                        <ul>
+                                            <li>Up to 30% lower prices during pre-construction</li>
+                                            <li>Appreciation potential before delivery</li>
+                                            <li>Flexible payment options available</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <a href="https://wa.me/529983074424" target="_blank" class="btn btn-success">Contact Agent</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </section>
+    <!-- Servici -->
+    <section id="services" class="services-section">
+        <div class="container">
+            <h2 class="section-title fade-in">Our Services</h2>
+            <div class="row">
+                <!-- Service 1 -->
+                <div class="col-md-4 fade-in">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <h3 class="service-title">Property Sales</h3>
+                        <p class="service-description">We specialize in luxury property sales with personalized service
+                            to help you find or sell your dream home.</p>
+                    </div>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="col-md-4 fade-in" style="transition-delay: 0.2s">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-key"></i>
+                        </div>
+                        <h3 class="service-title">Premium Rentals</h3>
+                        <p class="service-description">Exclusive rental properties with full management services for
+                            owners and premium experience for tenants.</p>
+                    </div>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="col-md-4 fade-in" style="transition-delay: 0.4s">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3 class="service-title">Investment Advisory</h3>
+                        <p class="service-description">Strategic advice to maximize your real estate investments with
+                            market analysis and portfolio management.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     <!-- Testimonials -->
     <section id="testimonials" class="testimonials">
         <div class="container">
